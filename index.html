@@ -4,38 +4,53 @@
   <meta charset="UTF-8">
   <title>Chinmay S.H | Aspiring Software Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS for scroll animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg-light: #f9f9f9;
+      --bg-dark: #1e1e1e;
+      --text-light: #333;
+      --text-dark: #f9f9f9;
+      --accent: #2980b9;
     }
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      line-height: 1.6;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
     }
 
     header {
       background: linear-gradient(to right, #2c3e50, #34495e);
       color: white;
-      padding: 40px 20px;
       text-align: center;
+      padding: 40px 20px;
     }
 
-    header h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    header p {
-      font-size: 1.2em;
-    }
-
-    nav {
-      margin-top: 20px;
+    header img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
     }
 
     nav a {
@@ -51,32 +66,69 @@
       margin: auto;
     }
 
-    section h2 {
+    h2 {
       font-size: 1.8em;
       margin-bottom: 20px;
       color: #2c3e50;
     }
 
-    ul {
-      list-style-type: disc;
-      margin-left: 20px;
-    }
-
-    .project {
-      margin-bottom: 20px;
+    .badge {
+      display: inline-block;
+      background: #eee;
+      padding: 5px 10px;
+      margin: 5px;
+      border-radius: 5px;
+      font-size: 0.9em;
     }
 
     .certificate {
+      background: #f0f0f0;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .testimonial {
+      background: #ecf0f1;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .blog-post {
       margin-bottom: 30px;
     }
 
-    .certificate img {
-      max-width: 100%;
-      height: auto;
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
       border: 1px solid #ccc;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin-top: 20px;
+      border-radius: 5px;
+    }
+
+    form button {
+      background: #2980b9;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #2980b9;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1000;
     }
 
     footer {
@@ -87,20 +139,7 @@
       margin-top: 40px;
     }
 
-    a {
-      color: #2980b9;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 2em;
-      }
-
       nav a {
         display: block;
         margin: 10px 0;
@@ -109,9 +148,30 @@
   </style>
 </head>
 <body>
+      <p>📱 <a href="tel:+919741597550">+91-9741597550</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Chinmay S.H | Built with 💻 and ☕</p>
+  </footer>
+
+  <!-- AOS JS Initialization -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+
+</body>
+</html>
+
+  <button class="toggle-btn" onclick="toggleDarkMode()"><i class="fas fa-moon"></i></button>
 
   <header>
-    <h1>🌟 Chinmay S.H</h1>
+    <img src="images/profile_photo.jpg" alt="Chinmay S.H Profile Photo" loading="lazy">
+    <h1>🌟 Chinmay S H</h1>
     <p>Aspiring Software Engineer | Passionate Learner | Problem Solver</p>
     <p>📍 Sullia, Karnataka, India</p>
     <nav>
@@ -119,71 +179,75 @@
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#certifications">Certifications</a>
+      <a href="#blog">Blog</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <section id="about">
+  <section id="about" data-aos="fade-up">
     <h2>🎯 Objective</h2>
     <p>Motivated and detail-oriented Computer Science student with strong programming skills in C++ and Java, a solid grasp of data structures and algorithms, and a passion for continuous learning. Seeking to contribute to innovative projects while growing as a technology professional.</p>
+    <p><a href="Chinmay_Resume.docx" download>📄 Download My Resume</a></p>
   </section>
 
-  <section id="skills">
+  <section id="skills" data-aos="fade-up">
     <h2>🧠 Technical Skills</h2>
-    <ul>
-      <li><strong>Programming:</strong> C++, Java, Python (basic), JavaScript</li>
-      <li><strong>Data Structures & Algorithms:</strong> Arrays, Linked Lists, Trees, Sorting, Searching</li>
-      <li><strong>Operating Systems:</strong> Process Management, Memory Allocation, Scheduling</li>
-      <li><strong>Networking:</strong> OSI Model, TCP/IP, DNS, HTTP</li>
-      <li><strong>Web Development:</strong> HTML5, CSS3, JavaScript, Bootstrap</li>
-      <li><strong>Version Control:</strong> Git, GitHub</li>
-    </ul>
+    <div class="badge">C++</div>
+    <div class="badge">Java</div>
+    <div class="badge">Python</div>
+    <div class="badge">JavaScript</div>
+    <div class="badge">HTML5</div>
+    <div class="badge">CSS3</div>
+    <div class="badge">Bootstrap</div>
+    <div class="badge">Git</div>
+    <div class="badge">GitHub</div>
   </section>
 
-  <section id="projects">
+  <section id="projects" data-aos="fade-up">
     <h2>💼 Projects</h2>
-    <div class="project">
+    <div>
       <h3>Anti-Fraud Transaction Analyzer</h3>
-      <p>Developed a web application to detect fraudulent transactions using a logistic regression model. Built with Python, HTML, and JavaScript.</p>
+      <p>Web app to detect fraudulent transactions using logistic regression. Built with Python, HTML, JavaScript.</p>
     </div>
-    <div class="project">
+    <div>
       <h3>Speech Recognized Billing System (Ongoing)</h3>
-      <p>Creating an automated billing system using speech recognition and machine learning. Tech stack: Python, React Native, MySQL.</p>
+      <p>Automated billing system using speech recognition and ML. Tech stack: Python, React Native, MySQL.</p>
     </div>
   </section>
 
-  <section id="certifications">
-  <h2>📜 Certifications</h2>
-
-  <div class="certificate">
-    <h3>Business Intelligence & Analytics – NPTEL</h3>
-    <p>Completed a 12-week course offered by IIT Madras via NPTEL, funded by the Ministry of Education, Government of India.</p>
-    <p><strong>Score:</strong> 55% (Assignments: 23.91/25, Exam: 31.5/75)</p>
-    <p><strong>Course Duration:</strong> Jan–Apr 2025</p>
-    <img src="nptel_certificate.png" alt="NPTEL Certificate - Business Intelligence & Analytics">
-  </div>
-
-  <div class="certificate">
-    <h3>Cloud Computing – NPTEL</h3>
-    <p>Successfully completed a 12-week course offered by IIT Kharagpur via NPTEL, funded by the Ministry of Education, Government of India.</p>
-    <p><strong>Score:</strong> 50% (Assignments: 19.85/25, Exam: 30/75)</p>
-    <p><strong>Course Duration:</strong> Jul–Oct 2024</p>
-    <img src="cloud_certificate.png" alt="NPTEL Certificate - Cloud Computing">
-  </div>
-</section>
-
-  <section id="contact">
-    <h2>📬 Contact Me</h2>
-    <p>📧 Email: <a href="mailto:chinmaysh075@gmail.com">chinmaysh075@gmail.com</a></p>
-    <p>📱 Phone: <a href="tel:+919741597550">+91-9741597550</a></p>
-    <p>💼 <a href="https://www.linkedin.com/in/chinmay-s-h" target="_blank">LinkedIn Profile</a></p>
-    <p>💻 <a href="https://github.com/chinmaysh075-gif" target="_blank">GitHub Portfolio</a></p>
+  <section id="certifications" data-aos="fade-up">
+    <h2>📜 Certifications</h2>
+    <div class="certificate">
+      <h3>Business Intelligence & Analytics – NPTEL</h3>
+      <p>Completed a 12-week course offered by IIT Madras via NPTEL.</p>
+      <p><strong>Score:</strong> 55%</p>
+      <p><strong>Duration:</strong> Jan–Apr 2025</p>
+      <img src="nptel_certificate.png" alt="NPTEL Certificate - Business Intelligence & Analytics">
+    </div>
+    <div class="certificate">
+      <h3>Cloud Computing – NPTEL</h3>
+      <p>Completed a 12-week course offered by IIT Kharagpur via NPTEL.</p>
+      <p><strong>Score:</strong> 50%</p>
+      <p><strong>Duration:</strong> Jul–Oct 2024</p>
+      <img src="cloud_certificate.png" alt="NPTEL Certificate - Cloud Computing">
+    </div>
   </section>
 
-  <footer>
-    <p>© 2025 Chinmay S.H | Built with 💻 and ☕</p>
-  </footer>
+  <section id="blog" data-aos="fade-up">
+    <h2>📝 Blog & Insights</h2>
+    <div class="blog-post">
+      <h3>How I Built My First ML Project</h3>
+      <p>Sharing the journey of building a fraud detection system using logistic regression and Python.</p>
+    </div>
+    <div class="blog-post">
+      <h3>Lessons from NPTEL Certifications</h3>
+      <p>Insights from completing two rigorous courses and how they shaped my understanding of BI and Cloud.</p>
+    </div>
+  </section>
 
-</body>
-</html>
-
+  <section id="contact" data-aos="fade-up">
+    <h2>📬 Contact Me</h2>
+    <p>If you'd like to get in touch, feel free to reach out via email or connect with me on LinkedIn!</p>
+    <p>✉️ Email: <a href="mailto:chinmay@example.com">chinmay@example.com</a></p>
+    <p>🔗 LinkedIn: <a href="https://www.linkedin.com/in/chinmay-sh" target="_blank">linkedin.com/in/chinmay-sh</a></p>
+  </section>
